@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "214701800049",
+    "project_id": "flash-chat-c4320",
+    "storage_bucket": "flash-chat-c4320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214701800049:android:5c6a96671599fbcb2ef9d0",
+        "android_client_info": {
+          "package_name": "com.rokadas.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214701800049-r5ujusstb8c0mknmdit0k0qvf4im5tqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA38034TCrchIGAKYRfMu3AsfaSEURJd0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214701800049-r5ujusstb8c0mknmdit0k0qvf4im5tqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
