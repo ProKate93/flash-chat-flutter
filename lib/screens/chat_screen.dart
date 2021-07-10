@@ -4,9 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = FirebaseFirestore.instance;
-//todo сделать сортировку по времени прихода сообщения, чтобы отображалось по порядку
-// CollectionReference idsRef = _firestore.collection("messages");
-// Query query = idsRef.orderBy(query.orderBy('text'));
 User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
@@ -78,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       messageTextController.clear();
                       _firestore.collection('messages').add({
+                        'timestamp': Timestamp.now(),
                         'text': messageText,
                         'sender': loggedInUser.email,
                       });
@@ -149,7 +147,10 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore
+          .collection('messages')
+          .orderBy('timestamp', descending: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
@@ -158,7 +159,7 @@ class MessagesStream extends StatelessWidget {
             ),
           );
         }
-        final messages = snapshot.data.docs.reversed;
+        final messages = snapshot.data.docs;
         List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
           final messageText = message['text'];
